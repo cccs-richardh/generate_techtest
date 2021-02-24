@@ -1,15 +1,20 @@
-""" generate_techtest.py
+""" generate_all_windows_tests.py
     This script will parse through the index.yaml file from the Atomic Red Team
     test suite.
     Why, why, would we do this?
     Well, the index file (found in the ART repo here: atomic-red-team/atomics/Indexes/index.yaml)
     contains the full list of tests. This has technique/command line info.
     We can parse this info for just what we need (each time ART delivers a new version of ART)
-    and produce the techniques_testnumber.py file that can be used by the atf_verifier.py script
-    to identify the specifics of what our tradecraft has caught.
+    and produce the .txt file that contains all windows tests.
+
+    [
+        "Invoke-AtomicTest T1574.001 -TestNumbers 1",
+        "Invoke-AtomicTest T1574.001 -TestNumbers 1 -Cleanup",
+        ...
+    ]
 
     So, this script needs the path to the index.yaml file and it will produce a candidate
-    techniques_testnumber.py file for use by the verifier."""
+    .txt file for use by the RunTests.ps1 powershell script file."""
 
 import logging
 import argparse
